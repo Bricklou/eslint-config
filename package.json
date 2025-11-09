@@ -156,5 +156,8 @@
   },
   "lint-staged": {
     "*": "eslint --fix"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

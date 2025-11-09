@@ -1,7 +1,7 @@
 {
   "name": "@bricklou/eslint-config",
   "type": "module",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "packageManager": "pnpm@10.20.0",
   "description": "Bricklou's ESLint config",
   "author": "Bricklou <louis13.bailleau@gmail.com> (https://github.com/bricklou/)",

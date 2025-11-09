@@ -207,22 +207,22 @@ lspconfig.eslint.setup({
 
 Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
-Normally you only need to import the `antfu` preset:
+Normally you only need to import the `configLinter` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu()
+export default configLinter()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   // Type of the project. 'lib' for libraries, the default is 'app'
   type: 'lib',
 
@@ -257,15 +257,15 @@ export default antfu({
 })
 ```
 
-The `antfu` factory function also accepts any number of arbitrary custom config overrides:
+The `configLinter` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu(
+export default configLinter(
   {
-    // Configures for antfu's config
+    // Configures for configLinter's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -372,9 +372,9 @@ Since v2.9.0, this preset will automatically rename the plugins also for your cu
 If you really want to use the original prefix, you can revert the plugin renaming by:
 
 ```ts
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu()
+export default configLinter()
   .renamePlugins({
     ts: '@typescript-eslint',
     yaml: 'yml',
@@ -391,9 +391,9 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu(
+export default configLinter(
   {
     vue: true,
     typescript: true
@@ -418,9 +418,9 @@ We also provided the `overrides` options in each integration to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   vue: {
     overrides: {
       'vue/operator-linebreak': ['error', 'before'],
@@ -441,13 +441,13 @@ export default antfu({
 
 ### Config Composer
 
-Since v2.10.0, the factory function `antfu()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/antfu/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
+Since v2.10.0, the factory function `configLinter()` returns a [`FlatConfigComposer` object from `eslint-flat-config-utils`](https://github.com/configLinter/eslint-flat-config-utils#composer) where you can chain the methods to compose the config even more flexibly.
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu()
+export default configLinter()
   .prepend(
     // some configs before the main config
   )
@@ -474,9 +474,9 @@ Vue support is detected automatically by checking if `vue` is installed in your 
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   vue: true
 })
 ```
@@ -487,9 +487,9 @@ We have limited support for Vue 2 (as it's already [reached EOL](https://v2.vuej
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   vue: {
     vueVersion: 2
   },
@@ -504,9 +504,9 @@ To enable Vue accessibility support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   vue: {
     a11y: true
   },
@@ -529,9 +529,9 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   formatters: {
     /**
      * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
@@ -565,9 +565,9 @@ To enable React support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   react: true,
 })
 ```
@@ -584,9 +584,9 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   unocss: true,
 })
 ```
@@ -641,9 +641,9 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },

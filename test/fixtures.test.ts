@@ -126,7 +126,7 @@ function runWithConfig(name: string, configs: OptionsConfig, ...items: TypedFlat
     })
     await fs.writeFile(join(target, 'eslint.config.js'), `
 // @eslint-disable
-import { configLinter } from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
 export default configLinter(
   ${JSON.stringify(configs)},

@@ -1,18 +1,18 @@
 {
   "name": "@bricklou/eslint-config",
   "type": "module",
-  "version": "6.3.2",
+  "version": "6.3.3",
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd",
   "description": "Bricklou's ESLint config",
-  "author": "Bricklou <louis13.bailleau@gmail.com> (https://github.com/bricklou/)",
+  "author": "Bricklou <louis13.bailleau@gmail.com> (https://github.com/Bricklou/)",
   "license": "MIT",
-  "homepage": "https://github.com/bricklou/eslint-config",
+  "homepage": "https://github.com/Bricklou/eslint-config",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bricklou/eslint-config.git"
+    "url": "https://github.com/Bricklou/eslint-config"
   },
   "bugs": {
-    "url": "https://github.com/bricklou/eslint-config/issues"
+    "url": "https://github.com/Bricklou/eslint-config/issues"
   },
   "keywords": [
     "eslint-config"

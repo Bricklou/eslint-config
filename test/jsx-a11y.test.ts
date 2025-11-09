@@ -3,7 +3,7 @@ import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { ESLint } from 'eslint'
 import { describe, expect, it } from 'vitest'
-import { configLinter } from '../src'
+import configLinter from '../src'
 
 describe('jsx-a11y rules', () => {
   const createESLint = async (options?: OptionsConfig) => {

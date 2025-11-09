@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/v/@bricklou/eslint-config?color=444&label=)](https://npmjs.com/package/@bricklou/eslint-config)
 
 > [!NOTE]
-> This configuration is an **opinionated fork** of the original [@bricklou/eslint-config](https://github.com/antfu/eslint-config), and may include additional customizations or changes to better suit specific preferences or workflows.
+> This configuration is an **opinionated fork** of the original [@antfu/eslint-config](https://github.com/antfu/eslint-config), and may include additional customizations or changes to better suit specific preferences or workflows.
 
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Reasonable defaults, best practices, only one line of config
@@ -41,9 +41,9 @@ And create `eslint.config.mjs` in your project root:
 
 ```js
 // eslint.config.mjs
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu()
+export default configLinter()
 ```
 
 ### Add script for package.json
@@ -664,9 +664,9 @@ This is to prevent unused imports from getting removed by the editor during refa
 
 ```js
 // eslint.config.js
-import antfu from '@bricklou/eslint-config'
+import configLinter from '@bricklou/eslint-config'
 
-export default antfu({
+export default configLinter({
   isInEditor: false
 })
 ```
@@ -722,16 +722,6 @@ This project follows [Semantic Versioning](https://semver.org/) for releases. Ho
 - Rules options changes
 - Version bumps of dependencies
 
-## Badge
-
-If you enjoy this code style, and would like to mention it in your project, here is the badge you can use:
-
-```md
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
-```
-
-[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
-
 ## FAQ
 
 ### Prettier?
@@ -750,31 +740,10 @@ Meanwhile, we do have dprint integrations for formatting other files such as `.m
 
 You can opt-in to the [`formatters`](#formatters) feature to format your CSS. Note that it's only doing formatting, but not linting. If you want proper linting support, give [`stylelint`](https://stylelint.io/) a try.
 
-### Top-level Function Style, etc.
-
-I am a very opinionated person, so as this config. I prefer the top-level functions always using the function declaration over arrow functions; I prefer one-line if statements without braces and always wraps, and so on. I even wrote some custom rules to enforce them.
-
-I know they are not necessarily the popular opinions. If you really want to get rid of them, you can disable them with:
-
-```ts
-import antfu from '@bricklou/eslint-config'
-
-export default antfu({
-  lessOpinionated: true
-})
-```
-
-### I prefer XXX...
-
-Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
-
-## Check Also
-
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/starter-ts](https://github.com/antfu/starter-ts) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
-
 ## License
 
-[MIT](./LICENSE) License &copy; 2019-PRESENT [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License &copy; 2025-PRESENT [Bricklou](https://github.com/bricklou)
+
+## Credits
+
+Thanks to [Anthony Fu](https://github.com/antfu) for creating the original version of this ESLint configuration, which served as the foundation for this opinionated fork.

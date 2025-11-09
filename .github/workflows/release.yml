@@ -35,6 +35,8 @@ jobs:
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
           scope: '@bricklou'
+      - name: update npm version
+        run: pnpm install --global npm@^11.6.2
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - run: pnpm -r publish --access public --no-git-checks

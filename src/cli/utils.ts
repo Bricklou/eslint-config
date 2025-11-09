@@ -15,7 +15,7 @@ export function getEslintConfigContent(
   additionalConfigs?: string[],
 ): string {
   return `
-import antfu from '@antfu/eslint-config'
+import antfu from '@bricklou/eslint-config'
 
 export default antfu({
 ${mainConfig}

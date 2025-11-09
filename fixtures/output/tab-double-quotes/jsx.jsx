@@ -20,7 +20,7 @@ export function HelloWorld({
 			<strong>{ greeting.slice(0, 1).toUpperCase() + greeting.slice(1).toLowerCase() }</strong>
 			{greeting.endsWith(",")
 				? " "
-				: <span style={{ color: "\grey" }}>", "</span> }
+				: <span style={{ color: "grey" }}>", "</span> }
 			<em>
 				{ greeted }
 			</em>

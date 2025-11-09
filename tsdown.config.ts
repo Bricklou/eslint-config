@@ -6,5 +6,5 @@ export default defineConfig({
     'src/cli.ts',
   ],
   shims: true,
-  format: ['esm'],
+  format: 'esm',
 })

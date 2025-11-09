@@ -1,6 +1,6 @@
-import { antfu } from './src'
+import { configLinter } from './src'
 
-export default antfu(
+export default configLinter(
   {
     vue: {
       a11y: true,

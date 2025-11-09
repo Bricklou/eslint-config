@@ -1,7 +1,7 @@
 {
   "name": "@bricklou/eslint-config",
   "type": "module",
-  "version": "6.2.0",
+  "version": "6.3.0",
   "packageManager": "pnpm@10.20.0",
   "description": "Bricklou's ESLint config",
   "author": "Bricklou <louis13.bailleau@gmail.com> (https://github.com/bricklou/)",
@@ -18,9 +18,9 @@
     "eslint-config"
   ],
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.mjs"
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "bin": "./bin/index.js",
   "files": [
@@ -158,6 +158,6 @@
     "*": "eslint --fix"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "provenance": true
   }
 }

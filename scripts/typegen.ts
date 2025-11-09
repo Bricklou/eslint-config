@@ -2,9 +2,9 @@ import fs from 'node:fs/promises'
 
 import js from '@eslint/js'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
-import { antfu } from '../src/factory'
+import { configLinter } from '../src/factory'
 
-const configs = await antfu({
+const configs = await configLinter({
   formatters: true,
   imports: true,
   jsx: {

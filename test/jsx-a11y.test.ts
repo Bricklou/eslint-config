@@ -3,11 +3,11 @@ import fs from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { ESLint } from 'eslint'
 import { describe, expect, it } from 'vitest'
-import { antfu } from '../src'
+import { configLinter } from '../src'
 
 describe('jsx-a11y rules', () => {
   const createESLint = async (options?: OptionsConfig) => {
-    const configs = await antfu({
+    const configs = await configLinter({
       react: true,
       typescript: false,
       stylistic: false,
@@ -16,6 +16,7 @@ describe('jsx-a11y rules', () => {
         a11y: true,
       },
       ...options,
+      ignores: [],
     })
 
     return new ESLint({
@@ -62,7 +63,7 @@ describe('jsx-a11y rules', () => {
   it('should respect a11y override in ESLint config', async () => {
     const code = await readFixture('jsx-a11y-errors/invalid-anchor-href.jsx')
 
-    const configs = await antfu({
+    const configs = await configLinter({
       react: true,
       typescript: false,
       stylistic: false,

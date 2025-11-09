@@ -1,4 +1,6 @@
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
+import { defineConfig } from '@eslint/config-helpers'
+import js from '@eslint/js'
 
 import globals from 'globals'
 
@@ -12,7 +14,7 @@ export async function javascript(
     overrides = {},
   } = options
 
-  return [
+  return defineConfig([
     {
       languageOptions: {
         ecmaVersion: 'latest',
@@ -39,9 +41,11 @@ export async function javascript(
       name: 'bricklou/javascript/setup',
     },
     {
+      extends: [js.configs.recommended],
       name: 'bricklou/javascript/rules',
       plugins: {
         'antfu': pluginAntfu,
+        js,
         'unused-imports': pluginUnusedImports,
       },
       rules: {
@@ -211,5 +215,5 @@ export async function javascript(
         ...overrides,
       },
     },
-  ]
+  ])
 }

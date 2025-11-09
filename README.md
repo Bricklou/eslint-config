@@ -1,4 +1,4 @@
-# @antfu/bricklou-config
+# @bricklou/eslint-config
 
 [![npm](https://img.shields.io/npm/v/@bricklou/eslint-config?color=444&label=)](https://npmjs.com/package/@bricklou/eslint-config)
 
@@ -26,7 +26,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config with one command.
 
 ```bash
-pnpm dlx @antfu/bricklou-config@latest
+pnpm dlx @bricklou/eslint-config@latest
 ```
 
 ### Manual Install
@@ -34,7 +34,7 @@ pnpm dlx @antfu/bricklou-config@latest
 If you prefer to set up manually:
 
 ```bash
-pnpm i -D eslint @antfu/bricklou-config
+pnpm i -D eslint @bricklou/eslint-config
 ```
 
 And create `eslint.config.mjs` in your project root:

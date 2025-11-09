@@ -1,11 +1,10 @@
 import fs from 'node:fs/promises'
 
+import js from '@eslint/js'
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core'
-import { builtinRules } from 'eslint/use-at-your-own-risk'
 import { antfu } from '../src/factory'
 
 const configs = await antfu({
-  astro: true,
   formatters: true,
   imports: true,
   jsx: {
@@ -13,14 +12,11 @@ const configs = await antfu({
   },
   jsonc: true,
   markdown: true,
-  nextjs: true,
   react: true,
-  solid: true,
   pnpm: true,
   regexp: true,
   stylistic: true,
   gitignore: true,
-  svelte: true,
   typescript: {
     tsconfigPath: 'tsconfig.json',
     erasableOnly: true,
@@ -38,7 +34,7 @@ const configs = await antfu({
     {
       plugins: {
         '': {
-          rules: Object.fromEntries(builtinRules.entries()),
+          rules: js.configs.recommended.rules,
         },
       },
     },

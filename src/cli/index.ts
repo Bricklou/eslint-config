@@ -17,7 +17,7 @@ const cli = cac('@antfu/eslint-config')
 cli
   .command('', 'Run the initialization or migration')
   .option('--yes, -y', 'Skip prompts and use default values', { default: false })
-  .option('--template, -t <template>', 'Use the framework template for optimal customization: vue / react / svelte / astro', { type: [] })
+  .option('--template, -t <template>', 'Use the framework template for optimal customization: vue / react', { type: [] })
   .option('--extra, -e <extra>', 'Use the extra utils: formatter / perfectionist / unocss', { type: [] })
   .action(async (args) => {
     header()

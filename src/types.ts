@@ -142,22 +142,6 @@ export interface OptionsFormatters {
    * By default it's controlled by our own config.
    */
   dprintOptions?: boolean
-
-  /**
-   * Install the prettier plugin for handle Slidev markdown
-   *
-   * Only works when `markdown` is enabled with `prettier`.
-   */
-  slidev?: boolean | {
-    files?: string[]
-  }
-
-  /**
-   * Enable formatting support for Astro.
-   *
-   * Currently only support Prettier.
-   */
-  astro?: 'prettier' | boolean
 }
 
 export interface OptionsComponentExts {
@@ -193,7 +177,7 @@ export interface OptionsTypeScriptParserOptions {
 
   /**
    * Glob patterns for files that should not be type aware.
-   * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+   * @default ['**\/*.md\/**']
    */
   ignoresTypeAware?: string[]
 }
@@ -375,19 +359,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   toml?: boolean | OptionsOverrides
 
   /**
-   * Enable ASTRO support.
-   *
-   * Requires installing:
-   * - `eslint-plugin-astro`
-   *
-   * Requires installing for formatting .astro:
-   * - `prettier-plugin-astro`
-   *
-   * @default false
-   */
-  astro?: boolean | OptionsOverrides
-
-  /**
    * Enable linting for **code snippets** in Markdown.
    *
    * For formatting Markdown content, enable also `formatters.markdown`.
@@ -423,36 +394,6 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default false
    */
   react?: boolean | OptionsOverrides
-
-  /**
-   * Enable nextjs rules.
-   *
-   * Requires installing:
-   * - `@next/eslint-plugin-next`
-   *
-   * @default false
-   */
-  nextjs?: boolean | OptionsOverrides
-
-  /**
-   * Enable solid rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-solid`
-   *
-   * @default false
-   */
-  solid?: boolean | OptionsOverrides
-
-  /**
-   * Enable svelte rules.
-   *
-   * Requires installing:
-   * - `eslint-plugin-svelte`
-   *
-   * @default false
-   */
-  svelte?: boolean | OptionsOverrides
 
   /**
    * Enable unocss rules.
@@ -500,23 +441,4 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default true
    */
   autoRenamePlugins?: boolean
-
-  /**
-   * Provide overrides for rules for each integration.
-   *
-   * @deprecated use `overrides` option in each integration key instead
-   */
-  overrides?: {
-    stylistic?: TypedFlatConfigItem['rules']
-    javascript?: TypedFlatConfigItem['rules']
-    typescript?: TypedFlatConfigItem['rules']
-    test?: TypedFlatConfigItem['rules']
-    vue?: TypedFlatConfigItem['rules']
-    jsonc?: TypedFlatConfigItem['rules']
-    markdown?: TypedFlatConfigItem['rules']
-    yaml?: TypedFlatConfigItem['rules']
-    toml?: TypedFlatConfigItem['rules']
-    react?: TypedFlatConfigItem['rules']
-    svelte?: TypedFlatConfigItem['rules']
-  }
 }

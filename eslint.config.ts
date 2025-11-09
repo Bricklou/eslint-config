@@ -6,10 +6,6 @@ export default antfu(
       a11y: true,
     },
     react: true,
-    solid: true,
-    svelte: true,
-    astro: true,
-    nextjs: false,
     typescript: {
       erasableOnly: true,
     },

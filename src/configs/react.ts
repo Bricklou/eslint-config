@@ -2,7 +2,7 @@
 import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types'
 
 import { isPackageExists } from 'local-pkg'
-import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
+import { GLOB_MARKDOWN, GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs'
 
 import { ensurePackages, interopDefault } from '../utils'
 
@@ -22,9 +22,6 @@ const ReactRouterPackages = [
   '@react-router/serve',
   '@react-router/dev',
 ]
-const NextJsPackages = [
-  'next',
-]
 
 export async function react(
   options: OptionsTypeScriptParserOptions & OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {},
@@ -34,7 +31,6 @@ export async function react(
     filesTypeAware = [GLOB_TS, GLOB_TSX],
     ignoresTypeAware = [
       `${GLOB_MARKDOWN}/**`,
-      GLOB_ASTRO_TS,
     ],
     overrides = {},
     tsconfigPath,
@@ -65,7 +61,6 @@ export async function react(
   const isAllowConstantExport = ReactRefreshAllowConstantExportPackages.some(i => isPackageExists(i))
   const isUsingRemix = RemixPackages.some(i => isPackageExists(i))
   const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i))
-  const isUsingNext = NextJsPackages.some(i => isPackageExists(i))
 
   const plugins = (pluginReact.configs.all as any).plugins
 
@@ -170,38 +165,19 @@ export async function react(
           'warn',
           {
             allowConstantExport: isAllowConstantExport,
-            allowExportNames: [
-              ...(isUsingNext
-                ? [
-                    'dynamic',
-                    'dynamicParams',
-                    'revalidate',
-                    'fetchCache',
-                    'runtime',
-                    'preferredRegion',
-                    'maxDuration',
-                    'config',
-                    'generateStaticParams',
-                    'metadata',
-                    'generateMetadata',
-                    'viewport',
-                    'generateViewport',
-                  ]
-                : []),
-              ...(isUsingRemix || isUsingReactRouter
-                ? [
-                    'meta',
-                    'links',
-                    'headers',
-                    'loader',
-                    'action',
-                    'clientLoader',
-                    'clientAction',
-                    'handle',
-                    'shouldRevalidate',
-                  ]
-                : []),
-            ],
+            allowExportNames: (isUsingRemix || isUsingReactRouter
+              ? [
+                  'meta',
+                  'links',
+                  'headers',
+                  'loader',
+                  'action',
+                  'clientLoader',
+                  'clientAction',
+                  'handle',
+                  'shouldRevalidate',
+                ]
+              : []),
           },
         ],
 

@@ -1,19 +1,18 @@
 {
-  "name": "@antfu/eslint-config",
+  "name": "@bricklou/eslint-config",
   "type": "module",
   "version": "6.2.0",
   "packageManager": "pnpm@10.20.0",
-  "description": "Anthony's ESLint config",
-  "author": "Anthony Fu <anthonyfu117@hotmail.com> (https://github.com/antfu/)",
+  "description": "Bricklou's ESLint config",
+  "author": "Bricklou <louis13.bailleau@gmail.com> (https://github.com/bricklou/)",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/antfu",
-  "homepage": "https://github.com/antfu/eslint-config",
+  "homepage": "https://github.com/bricklou/eslint-config",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antfu/eslint-config.git"
+    "url": "git+https://github.com/bricklou/eslint-config.git"
   },
   "bugs": {
-    "url": "https://github.com/antfu/eslint-config/issues"
+    "url": "https://github.com/bricklou/eslint-config/issues"
   },
   "keywords": [
     "eslint-config"
@@ -44,40 +43,23 @@
   },
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "^2.0.1",
-    "@next/eslint-plugin-next": ">=15.0.0",
     "@prettier/plugin-xml": "^3.4.1",
     "@unocss/eslint-plugin": ">=0.50.0",
-    "astro-eslint-parser": "^1.0.2",
     "eslint": "^9.10.0",
-    "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-format": ">=0.1.0",
     "eslint-plugin-jsx-a11y": ">=6.10.2",
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.4.19",
-    "eslint-plugin-solid": "^0.14.3",
-    "eslint-plugin-svelte": ">=2.35.1",
-    "eslint-plugin-vuejs-accessibility": "^2.4.1",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-slidev": "^1.0.5",
-    "svelte-eslint-parser": ">=0.37.0"
+    "eslint-plugin-vuejs-accessibility": "^2.4.1"
   },
   "peerDependenciesMeta": {
     "@eslint-react/eslint-plugin": {
-      "optional": true
-    },
-    "@next/eslint-plugin-next": {
       "optional": true
     },
     "@prettier/plugin-xml": {
       "optional": true
     },
     "@unocss/eslint-plugin": {
-      "optional": true
-    },
-    "astro-eslint-parser": {
-      "optional": true
-    },
-    "eslint-plugin-astro": {
       "optional": true
     },
     "eslint-plugin-format": {
@@ -92,22 +74,7 @@
     "eslint-plugin-react-refresh": {
       "optional": true
     },
-    "eslint-plugin-solid": {
-      "optional": true
-    },
-    "eslint-plugin-svelte": {
-      "optional": true
-    },
     "eslint-plugin-vuejs-accessibility": {
-      "optional": true
-    },
-    "prettier-plugin-astro": {
-      "optional": true
-    },
-    "prettier-plugin-slidev": {
-      "optional": true
-    },
-    "svelte-eslint-parser": {
       "optional": true
     }
   },
@@ -150,37 +117,28 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "workspace:*",
     "@antfu/ni": "catalog:dev",
+    "@bricklou/eslint-config": "workspace:*",
     "@eslint-react/eslint-plugin": "catalog:peer",
     "@eslint/config-inspector": "catalog:dev",
-    "@next/eslint-plugin-next": "catalog:peer",
     "@prettier/plugin-xml": "catalog:peer",
     "@types/eslint-plugin-jsx-a11y": "catalog:dev",
     "@types/node": "catalog:dev",
     "@unocss/eslint-plugin": "catalog:peer",
-    "astro-eslint-parser": "catalog:peer",
     "bumpp": "catalog:dev",
     "eslint": "catalog:peer",
-    "eslint-plugin-astro": "catalog:peer",
     "eslint-plugin-erasable-syntax-only": "catalog:peer",
     "eslint-plugin-format": "catalog:peer",
     "eslint-plugin-jsx-a11y": "catalog:peer",
     "eslint-plugin-react-hooks": "catalog:peer",
     "eslint-plugin-react-refresh": "catalog:peer",
-    "eslint-plugin-solid": "catalog:peer",
-    "eslint-plugin-svelte": "catalog:peer",
     "eslint-plugin-vuejs-accessibility": "catalog:peer",
     "eslint-typegen": "catalog:dev",
     "execa": "catalog:dev",
     "jiti": "catalog:dev",
     "lint-staged": "catalog:dev",
     "pnpm-workspace-yaml": "catalog:dev",
-    "prettier-plugin-astro": "catalog:peer",
-    "prettier-plugin-slidev": "catalog:peer",
     "simple-git-hooks": "catalog:dev",
-    "svelte": "catalog:peer",
-    "svelte-eslint-parser": "catalog:peer",
     "tinyglobby": "catalog:dev",
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",

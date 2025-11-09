@@ -5,8 +5,6 @@ import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from 
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
 import {
-  astro,
-  command,
   comments,
   disables,
   ignores,
@@ -16,16 +14,13 @@ import {
   jsonc,
   jsx,
   markdown,
-  nextjs,
   node,
   perfectionist,
   pnpm,
   react,
-  solid,
   sortPackageJson,
   sortTsconfig,
   stylistic,
-  svelte,
   test,
   toml,
   typescript,
@@ -52,7 +47,6 @@ const VuePackages = [
   'vue',
   'nuxt',
   'vitepress',
-  '@slidev/cli',
 ]
 
 export const defaultPluginRenaming = {
@@ -61,7 +55,6 @@ export const defaultPluginRenaming = {
   '@eslint-react/hooks-extra': 'react-hooks-extra',
   '@eslint-react/naming-convention': 'react-naming-convention',
 
-  '@next/next': 'next',
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
   'import-lite': 'import',
@@ -86,19 +79,15 @@ export function antfu(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
-    astro: enableAstro = false,
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
     ignores: userIgnores = [],
     imports: enableImports = true,
     jsx: enableJsx = true,
-    nextjs: enableNextjs = false,
     pnpm: enableCatalogs = false, // TODO: smart detect
     react: enableReact = false,
     regexp: enableRegexp = true,
-    solid: enableSolid = false,
-    svelte: enableSvelte = false,
     typescript: enableTypeScript = isPackageExists('typescript'),
     unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
@@ -157,7 +146,6 @@ export function antfu(
     imports({
       stylistic: stylisticOptions,
     }),
-    command(),
 
     // Optional plugins (installed but not enabled by default)
     perfectionist(),
@@ -233,39 +221,10 @@ export function antfu(
     }))
   }
 
-  if (enableNextjs) {
-    configs.push(nextjs({
-      overrides: getOverrides(options, 'nextjs'),
-    }))
-  }
-
-  if (enableSolid) {
-    configs.push(solid({
-      overrides: getOverrides(options, 'solid'),
-      tsconfigPath,
-      typescript: !!enableTypeScript,
-    }))
-  }
-
-  if (enableSvelte) {
-    configs.push(svelte({
-      overrides: getOverrides(options, 'svelte'),
-      stylistic: stylisticOptions,
-      typescript: !!enableTypeScript,
-    }))
-  }
-
   if (enableUnoCSS) {
     configs.push(unocss({
       ...resolveSubOptions(options, 'unocss'),
       overrides: getOverrides(options, 'unocss'),
-    }))
-  }
-
-  if (enableAstro) {
-    configs.push(astro({
-      overrides: getOverrides(options, 'astro'),
-      stylistic: stylisticOptions,
     }))
   }
 
@@ -382,7 +341,6 @@ export function getOverrides<K extends keyof OptionsConfig>(
 ): Partial<Linter.RulesRecord & RuleOptions> {
   const sub = resolveSubOptions(options, key)
   return {
-    ...(options.overrides as any)?.[key],
     ...'overrides' in sub
       ? sub.overrides
       : {},

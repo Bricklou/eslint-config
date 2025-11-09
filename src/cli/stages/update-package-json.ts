@@ -31,10 +31,7 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
     result.extra.forEach((item: ExtraLibrariesOption) => {
       switch (item) {
         case 'formatter':
-          (<const>[
-            ...dependenciesMap.formatter,
-            ...(result.frameworks.includes('astro') ? dependenciesMap.formatterAstro : []),
-          ]).forEach((f) => {
+          ([...dependenciesMap.formatter] as const).forEach((f) => {
             if (!f)
               return
             pkg.devDependencies[f] = versionsMap[f as keyof typeof versionsMap]

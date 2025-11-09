@@ -83,7 +83,7 @@ export async function formatters(
 
   const configs: TypedFlatConfigItem[] = [
     {
-      name: 'antfu/formatter/setup',
+      name: 'bricklou/formatter/setup',
       plugins: {
         format: pluginFormat,
       },
@@ -97,7 +97,7 @@ export async function formatters(
         languageOptions: {
           parser: parserPlain,
         },
-        name: 'antfu/formatter/css',
+        name: 'bricklou/formatter/css',
         rules: {
           'format/prettier': [
             'error',
@@ -112,7 +112,7 @@ export async function formatters(
         languageOptions: {
           parser: parserPlain,
         },
-        name: 'antfu/formatter/scss',
+        name: 'bricklou/formatter/scss',
         rules: {
           'format/prettier': [
             'error',
@@ -127,7 +127,7 @@ export async function formatters(
         languageOptions: {
           parser: parserPlain,
         },
-        name: 'antfu/formatter/less',
+        name: 'bricklou/formatter/less',
         rules: {
           'format/prettier': [
             'error',
@@ -146,7 +146,7 @@ export async function formatters(
       languageOptions: {
         parser: parserPlain,
       },
-      name: 'antfu/formatter/html',
+      name: 'bricklou/formatter/html',
       rules: {
         'format/prettier': [
           'error',
@@ -164,7 +164,7 @@ export async function formatters(
       languageOptions: {
         parser: parserPlain,
       },
-      name: 'antfu/formatter/xml',
+      name: 'bricklou/formatter/xml',
       rules: {
         'format/prettier': [
           'error',
@@ -184,7 +184,7 @@ export async function formatters(
       languageOptions: {
         parser: parserPlain,
       },
-      name: 'antfu/formatter/svg',
+      name: 'bricklou/formatter/svg',
       rules: {
         'format/prettier': [
           'error',
@@ -209,7 +209,7 @@ export async function formatters(
       languageOptions: {
         parser: parserPlain,
       },
-      name: 'antfu/formatter/markdown',
+      name: 'bricklou/formatter/markdown',
       rules: {
         [`format/${formater}`]: [
           'error',
@@ -233,7 +233,7 @@ export async function formatters(
       languageOptions: {
         parser: parserPlain,
       },
-      name: 'antfu/formatter/graphql',
+      name: 'bricklou/formatter/graphql',
       rules: {
         'format/prettier': [
           'error',

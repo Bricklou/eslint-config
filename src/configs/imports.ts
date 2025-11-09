@@ -9,7 +9,7 @@ export async function imports(options: OptionsOverrides & OptionsStylistic = {})
 
   return [
     {
-      name: 'antfu/imports/rules',
+      name: 'bricklou/imports/rules',
       plugins: {
         antfu: pluginAntfu,
         import: pluginImportLite,

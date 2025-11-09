@@ -5,6 +5,7 @@ import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from 
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import { isPackageExists } from 'local-pkg'
 import {
+  angular,
   comments,
   disables,
   ignores,
@@ -79,6 +80,7 @@ export function antfu(
   ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
   const {
+    angular: enableAngular = false,
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
@@ -116,13 +118,13 @@ export function antfu(
   if (enableGitignore) {
     if (typeof enableGitignore !== 'boolean') {
       configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-        name: 'antfu/gitignore',
+        name: 'bricklou/gitignore',
         ...enableGitignore,
       })]))
     }
     else {
       configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r({
-        name: 'antfu/gitignore',
+        name: 'bricklou/gitignore',
         strict: false,
       })]))
     }
@@ -218,6 +220,13 @@ export function antfu(
       ...typescriptOptions,
       overrides: getOverrides(options, 'react'),
       tsconfigPath,
+    }))
+  }
+
+  if (enableAngular) {
+    configs.push(angular({
+      html: resolveSubOptions(options, 'angular').html,
+      ts: resolveSubOptions(options, 'angular').ts,
     }))
   }
 

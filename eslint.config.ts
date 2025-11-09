@@ -6,6 +6,7 @@ export default antfu(
       a11y: true,
     },
     react: true,
+    angular: true,
     typescript: {
       erasableOnly: true,
     },

@@ -40,6 +40,53 @@ export interface OptionsFiles {
   files?: string[]
 }
 
+interface OptionAngularSelectors {
+  /**
+   * Type of the selector.
+   * @default ''
+   */
+  type?: string | ('element' | 'attribute')[]
+
+  /**
+   * Prefix for the selector.
+   * @default ''
+   */
+  prefix?: string | unknown[]
+
+  /**
+   * Style of the selector.
+   * @default 'kebab-case'
+   */
+  style?: 'kebab-case' | 'camelCase'
+}
+
+export interface OptionAngular {
+  /**
+   * Override the `ts` option to provide custom files and overrides.
+   */
+  ts?: OptionsFiles & OptionsOverrides
+  /**
+   * Override the `html` option to provide custom files and overrides.
+   */
+  html?: OptionsFiles & OptionsOverrides
+
+  /**
+   * Angular components & directives selectors configuration.
+   * @see https://angular.io/guide/styleguide#style-05-07
+   */
+  selectors?: {
+    /**
+     * Prefix for component selectors.
+     */
+    component?: OptionAngularSelectors
+
+    /**
+     * Prefix for directive selectors.
+     */
+    directive?: OptionAngularSelectors
+  }
+}
+
 export interface OptionsVue extends OptionsOverrides {
   /**
    * Create virtual files for Vue SFC blocks to enable linting.
@@ -394,6 +441,16 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * @default false
    */
   react?: boolean | OptionsOverrides
+
+  /**
+   * Enable angular rules.
+   *
+   * Requires installing:
+   * - `angular-eslint`
+   *
+   * @default false
+   */
+  angular?: boolean | { ts?: OptionsOverrides, html?: OptionsOverrides }
 
   /**
    * Enable unocss rules.

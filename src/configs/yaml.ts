@@ -27,7 +27,7 @@ export async function yaml(
 
   return [
     {
-      name: 'antfu/yaml/setup',
+      name: 'bricklou/yaml/setup',
       plugins: {
         yaml: pluginYaml,
       },
@@ -37,7 +37,7 @@ export async function yaml(
       languageOptions: {
         parser: parserYaml,
       },
-      name: 'antfu/yaml/rules',
+      name: 'bricklou/yaml/rules',
       rules: {
         'style/spaced-comment': 'off',
 
@@ -71,7 +71,7 @@ export async function yaml(
     },
     {
       files: ['pnpm-workspace.yaml'],
-      name: 'antfu/yaml/pnpm-workspace',
+      name: 'bricklou/yaml/pnpm-workspace',
       rules: {
         'yaml/sort-keys': [
           'error',

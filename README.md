@@ -2,9 +2,12 @@
 
 [![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
+> [!NOTE]
+> This configuration is an **opinionated fork** of the original [@antfu/eslint-config](https://github.com/antfu/eslint-config), and may include additional customizations or changes to better suit specific preferences or workflows.
+
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Reasonable defaults, best practices, only one line of config
-- Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, etc. Out-of-box.
+- Designed to work with TypeScript, JSX, Vue, JSON, YAML, Toml, Markdown, Angular, etc. Out-of-box.
 - Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Optional [React](#react), [UnoCSS](#unocss) support
@@ -15,21 +18,6 @@
   - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
 - Requires ESLint v9.5.0+
-
-> [!NOTE]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
->
-> Since v3.0.0, ESLint v9.5.0+ is now required.
-
-> [!WARNING]
-> I am super appreciative and even a bit flattered that so many of you are fond of using this config. For that reason, I tried to make it as flexible and customizable as possible to fit more use cases.
->
-> However, please keep in mind that this is still **_a personal config_** with a lot of opinions. Changes might not always work for everyone and every use case.
->
-> If you are using this config directly, I suggest you **review the changes every time you update**. Or if you want more control over the rules, always feel free to fork it. Thanks!
-
-> [!TIP]
-> If you are interested in the tooling and the philosophy behind this config, I gave a talk about ESLint flat config at [JSNation 2024 - ESLint One for All Made Easy](https://gitnation.com/contents/eslint-one-for-all-made-easy), slides are [here](https://talks.antfu.me/2024/jsnation).
 
 ## Usage
 
@@ -57,41 +45,6 @@ import antfu from '@antfu/eslint-config'
 
 export default antfu()
 ```
-
-<details>
-<summary>
-Combined with legacy config:
-</summary>
-
-If you still use some configs from the legacy eslintrc format, you can use the [`@eslint/eslintrc`](https://www.npmjs.com/package/@eslint/eslintrc) package to convert them to the flat config.
-
-```js
-// eslint.config.mjs
-import antfu from '@antfu/eslint-config'
-import { FlatCompat } from '@eslint/eslintrc'
-
-const compat = new FlatCompat()
-
-export default antfu(
-  {
-    ignores: [],
-  },
-
-  // Legacy config
-  ...compat.config({
-    extends: [
-      'eslint:recommended',
-      // Other extends...
-    ],
-  })
-
-  // Other flat configs...
-)
-```
-
-> Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
-
-</details>
 
 ### Add script for package.json
 

@@ -66,7 +66,7 @@ export async function react(
 
   return [
     {
-      name: 'antfu/react/setup',
+      name: 'bricklou/react/setup',
       plugins: {
         'react': plugins['@eslint-react'],
         'react-dom': plugins['@eslint-react/dom'],
@@ -87,7 +87,7 @@ export async function react(
         },
         sourceType: 'module',
       },
-      name: 'antfu/react/rules',
+      name: 'bricklou/react/rules',
       rules: {
         // recommended rules from eslint-plugin-react-x https://eslint-react.xyz/docs/rules/overview#core-rules
         'react/jsx-no-comment-textnodes': 'warn',
@@ -189,7 +189,7 @@ export async function react(
       ? [{
           files: filesTypeAware,
           ignores: ignoresTypeAware,
-          name: 'antfu/react/type-aware-rules',
+          name: 'bricklou/react/type-aware-rules',
           rules: {
             ...typeAwareRules,
           },

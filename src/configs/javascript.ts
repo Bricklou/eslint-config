@@ -36,10 +36,10 @@ export async function javascript(
       linterOptions: {
         reportUnusedDisableDirectives: true,
       },
-      name: 'antfu/javascript/setup',
+      name: 'bricklou/javascript/setup',
     },
     {
-      name: 'antfu/javascript/rules',
+      name: 'bricklou/javascript/rules',
       plugins: {
         'antfu': pluginAntfu,
         'unused-imports': pluginUnusedImports,

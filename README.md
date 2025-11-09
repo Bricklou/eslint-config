@@ -1,6 +1,6 @@
 # @antfu/bricklou-config
 
-[![npm](https://img.shields.io/npm/v/@bricklou/eslint-config?color=444&label=)](https://npmjs.com/package/@bricklou/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/@bricklou/eslint-config?color=444&label=)](https://npmjs.com/package/@bricklou/eslint-config)
 
 > [!NOTE]
 > This configuration is an **opinionated fork** of the original [@bricklou/eslint-config](https://github.com/antfu/eslint-config), and may include additional customizations or changes to better suit specific preferences or workflows.

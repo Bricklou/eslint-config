@@ -224,8 +224,10 @@ export function configLinter(
   }
 
   if (enableAngular) {
+    const selectors = resolveSubOptions(options, 'angular').selectors || {}
     configs.push(angular({
       html: resolveSubOptions(options, 'angular').html,
+      selectors,
       ts: resolveSubOptions(options, 'angular').ts,
     }))
   }

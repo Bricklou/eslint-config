@@ -450,7 +450,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    *
    * @default false
    */
-  angular?: boolean | { ts?: OptionsOverrides, html?: OptionsOverrides }
+  angular?: boolean | OptionAngular
 
   /**
    * Enable unocss rules.

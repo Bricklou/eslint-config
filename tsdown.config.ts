@@ -5,6 +5,10 @@ export default defineConfig({
     'src/index.ts',
     'src/cli.ts',
   ],
+  outExtensions: () => ({
+    js: '.js',
+    dts: '.d.ts',
+  }),
   shims: true,
   format: 'esm',
 })

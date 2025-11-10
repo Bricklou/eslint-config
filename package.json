@@ -42,13 +42,14 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@angular-eslint/eslint-plugin": "catalog:peer",
+    "@angular-eslint/eslint-plugin-template": "catalog:peer",
     "@angular-eslint/template-parser": "catalog:peer",
     "@eslint-react/eslint-plugin": "^2.0.1",
     "@html-eslint/eslint-plugin": "catalog:peer",
     "@html-eslint/parser": "catalog:peer",
     "@prettier/plugin-xml": "^3.4.1",
     "@unocss/eslint-plugin": ">=0.50.0",
-    "angular-eslint": "catalog:peer",
     "eslint": "^9.10.0",
     "eslint-plugin-format": ">=0.1.0",
     "eslint-plugin-jsx-a11y": ">=6.10.2",
@@ -57,6 +58,15 @@
     "eslint-plugin-vuejs-accessibility": "^2.4.1"
   },
   "peerDependenciesMeta": {
+    "@angular-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@angular-eslint/eslint-plugin-template": {
+      "optional": true
+    },
+    "@angular-eslint/template-parser": {
+      "optional": true
+    },
     "@eslint-react/eslint-plugin": {
       "optional": true
     },
@@ -121,6 +131,8 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
+    "@angular-eslint/eslint-plugin": "catalog:peer",
+    "@angular-eslint/eslint-plugin-template": "catalog:peer",
     "@angular-eslint/template-parser": "catalog:peer",
     "@antfu/ni": "catalog:dev",
     "@bricklou/eslint-config": "workspace:*",
@@ -132,7 +144,6 @@
     "@types/eslint-plugin-jsx-a11y": "catalog:dev",
     "@types/node": "catalog:dev",
     "@unocss/eslint-plugin": "catalog:peer",
-    "angular-eslint": "catalog:peer",
     "bumpp": "catalog:dev",
     "eslint": "catalog:peer",
     "eslint-plugin-erasable-syntax-only": "catalog:peer",

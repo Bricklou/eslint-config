@@ -446,7 +446,9 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
    * Enable angular rules.
    *
    * Requires installing:
-   * - `angular-eslint`
+   * - `@angular-eslint/eslint-plugin`
+   * - `@angular-eslint/eslint-plugin-template`
+   * - `@angular-eslint/template-parser`
    *
    * @default false
    */

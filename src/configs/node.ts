@@ -1,10 +1,12 @@
 import type { TypedFlatConfigItem } from '../types'
 
+import { GLOB_HTML } from '../globs'
 import { pluginNode } from '../plugins'
 
 export async function node(): Promise<TypedFlatConfigItem[]> {
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/node/rules',
       plugins: {
         node: pluginNode,

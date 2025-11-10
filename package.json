@@ -42,7 +42,10 @@
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
+    "@angular-eslint/template-parser": "catalog:peer",
     "@eslint-react/eslint-plugin": "^2.0.1",
+    "@html-eslint/eslint-plugin": "catalog:peer",
+    "@html-eslint/parser": "catalog:peer",
     "@prettier/plugin-xml": "^3.4.1",
     "@unocss/eslint-plugin": ">=0.50.0",
     "angular-eslint": "catalog:peer",
@@ -118,10 +121,13 @@
     "yaml-eslint-parser": "catalog:prod"
   },
   "devDependencies": {
+    "@angular-eslint/template-parser": "catalog:peer",
     "@antfu/ni": "catalog:dev",
     "@bricklou/eslint-config": "workspace:*",
     "@eslint-react/eslint-plugin": "catalog:peer",
     "@eslint/config-inspector": "catalog:dev",
+    "@html-eslint/eslint-plugin": "catalog:peer",
+    "@html-eslint/parser": "catalog:peer",
     "@prettier/plugin-xml": "catalog:peer",
     "@types/eslint-plugin-jsx-a11y": "catalog:dev",
     "@types/node": "catalog:dev",

@@ -1,6 +1,7 @@
 import type { OptionsOverrides, OptionsRegExp, TypedFlatConfigItem } from '../types'
-
 import { configs } from 'eslint-plugin-regexp'
+
+import { GLOB_HTML } from '../globs'
 
 export async function regexp(
   options: OptionsRegExp & OptionsOverrides = {},
@@ -20,6 +21,7 @@ export async function regexp(
 
   return [
     {
+      ignores: [GLOB_HTML],
       ...config,
       name: 'bricklou/regexp/rules',
       rules: {

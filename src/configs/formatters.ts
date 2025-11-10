@@ -20,9 +20,14 @@ function mergePrettierOptions(
   }
 }
 
+interface FormattersExtraOptions {
+  angular?: boolean
+}
+
 export async function formatters(
   options: OptionsFormatters | true = {},
   stylistic: StylisticConfig = {},
+  extras?: FormattersExtraOptions,
 ): Promise<TypedFlatConfigItem[]> {
   if (options === true) {
     const isPrettierPluginXmlInScope = isPackageInScope('@prettier/plugin-xml')
@@ -151,7 +156,7 @@ export async function formatters(
         'format/prettier': [
           'error',
           mergePrettierOptions(prettierOptions, {
-            parser: 'html',
+            parser: extras?.angular ? 'angular' : 'html',
           }),
         ],
       },

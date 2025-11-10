@@ -1,4 +1,5 @@
 import type { OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types'
+import { GLOB_HTML } from '../globs'
 import { pluginAntfu, pluginImportLite } from '../plugins'
 
 export async function imports(options: OptionsOverrides & OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
@@ -9,6 +10,7 @@ export async function imports(options: OptionsOverrides & OptionsStylistic = {})
 
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/imports/rules',
       plugins: {
         antfu: pluginAntfu,

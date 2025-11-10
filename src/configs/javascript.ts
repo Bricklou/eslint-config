@@ -1,9 +1,9 @@
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types'
-import { defineConfig } from '@eslint/config-helpers'
 import js from '@eslint/js'
 
 import globals from 'globals'
 
+import { GLOB_HTML } from '../globs'
 import { pluginAntfu, pluginUnusedImports } from '../plugins'
 
 export async function javascript(
@@ -14,13 +14,13 @@ export async function javascript(
     overrides = {},
   } = options
 
-  return defineConfig([
+  return [
     {
       languageOptions: {
         ecmaVersion: 'latest',
         globals: {
           ...globals.browser,
-          ...globals.es2021,
+          ...globals.es2024,
           ...globals.node,
           document: 'readonly',
           navigator: 'readonly',
@@ -41,7 +41,7 @@ export async function javascript(
       name: 'bricklou/javascript/setup',
     },
     {
-      extends: [js.configs.recommended],
+      ignores: [GLOB_HTML],
       name: 'bricklou/javascript/rules',
       plugins: {
         'antfu': pluginAntfu,
@@ -49,6 +49,7 @@ export async function javascript(
         'unused-imports': pluginUnusedImports,
       },
       rules: {
+        ...js.configs.recommended.rules,
         'accessor-pairs': ['error', { enforceForClassMembers: true, setWithoutGet: true }],
 
         'antfu/no-top-level-await': 'error',
@@ -215,5 +216,5 @@ export async function javascript(
         ...overrides,
       },
     },
-  ])
+  ]
 }

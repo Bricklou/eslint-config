@@ -10,6 +10,8 @@ const configs = await configLinter({
   jsx: {
     a11y: true,
   },
+  angular: true,
+  html: true,
   jsonc: true,
   markdown: true,
   react: true,

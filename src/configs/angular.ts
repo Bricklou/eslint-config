@@ -1,5 +1,5 @@
+import type { Linter } from 'eslint'
 import type { OptionAngular, TypedFlatConfigItem } from '../types'
-import { defineConfig } from '@eslint/config-helpers'
 import { GLOB_HTML, GLOB_TS } from '../globs'
 import { ensurePackages, interopDefault } from '../utils'
 
@@ -25,28 +25,58 @@ export async function angular(
     'angular-eslint',
   ])
 
-  const pluginAngular = await interopDefault(import('angular-eslint'))
+  const [
+    parserTs,
+    pluginAngular,
+    pluginAngularTemplate,
+    parserAngularTemplate,
+  ] = await Promise.all([
+    interopDefault(import('@typescript-eslint/parser')),
+    interopDefault(import('@angular-eslint/eslint-plugin')),
+    interopDefault(import('@angular-eslint/eslint-plugin-template')),
+    interopDefault(import('@angular-eslint/template-parser')),
+  ])
 
-  return defineConfig(
+  const processInlineTemplates = pluginAngularTemplate.processors?.['extract-inline-html'] as Linter.Processor
+
+  return [
     {
-      // @ts-expect-error -- Angular ESLint types are broken with the new `defineConfig` API from `eslint`
-      extends: [...pluginAngular.configs.tsRecommended],
       files: tsConfig.files,
-      name: 'bricklou/angular/setup',
+      languageOptions: {
+        parser: parserTs,
+        sourceType: 'module',
+      },
+      name: 'bricklou/angular/ts-base',
+      plugins: {
+        angular: pluginAngular,
+      },
+      processor: processInlineTemplates,
     },
+
     {
-      extends: [
-        ...pluginAngular.configs.templateRecommended,
-        ...pluginAngular.configs.templateAccessibility,
-      ],
-      files: htmlConfig.files,
-      name: 'bricklou/angular/template/setup',
+      files: tsConfig.files,
+      name: 'bricklou/angular/recommended',
+      rules: {
+        '@angular-eslint/contextual-lifecycle': 'error',
+        '@angular-eslint/no-empty-lifecycle-method': 'error',
+        '@angular-eslint/no-input-rename': 'error',
+        '@angular-eslint/no-inputs-metadata-property': 'error',
+        '@angular-eslint/no-output-native': 'error',
+        '@angular-eslint/no-output-on-prefix': 'error',
+        '@angular-eslint/no-output-rename': 'error',
+        '@angular-eslint/no-outputs-metadata-property': 'error',
+        '@angular-eslint/prefer-inject': 'error',
+        '@angular-eslint/prefer-standalone': 'error',
+        '@angular-eslint/use-lifecycle-interface': 'warn',
+        '@angular-eslint/use-pipe-transform-interface': 'error',
+      },
     },
+
     {
       files: tsConfig.files,
       name: 'bricklou/angular/rules',
       rules: {
-        '@angular-eslint/component-selector': [
+        'angular/component-selector': [
           'error',
           {
             prefix: componentSelectors.prefix ?? '',
@@ -54,7 +84,7 @@ export async function angular(
             type: componentSelectors.type ?? 'element',
           },
         ],
-        '@angular-eslint/directive-selector': [
+        'angular/directive-selector': [
           'error',
           {
             prefix: directiveSelectors.prefix ?? '',
@@ -62,43 +92,87 @@ export async function angular(
             type: directiveSelectors.type ?? 'attribute',
           },
         ],
-        '@angular-eslint/no-async-lifecycle-method': 'error',
-        '@angular-eslint/no-duplicates-in-metadata-arrays': 'warn',
-        '@angular-eslint/prefer-host-metadata-property': 'warn',
-        '@angular-eslint/prefer-inject': 'error',
-        '@angular-eslint/prefer-on-push-component-change-detection': 'error',
+        'angular/no-async-lifecycle-method': 'error',
+        'angular/no-duplicates-in-metadata-arrays': 'warn',
+        'angular/prefer-host-metadata-property': 'warn',
+        'angular/prefer-on-push-component-change-detection': 'error',
 
-        '@angular-eslint/prefer-signals': 'error',
-        '@angular-eslint/use-lifecycle-interface': 'warn',
+        'angular/prefer-signals': 'error',
 
         ...tsConfig.overrides,
       },
     },
+
+    {
+      files: htmlConfig.files,
+      languageOptions: {
+        parser: parserAngularTemplate,
+      },
+      name: 'bricklou/angular/template-base',
+      plugins: {
+        'angular-template': pluginAngularTemplate,
+      },
+    },
+
+    {
+      files: htmlConfig.files,
+      languageOptions: {
+        parser: parserAngularTemplate,
+      },
+      name: 'bricklou/angular/template-recommended',
+      plugins: {
+        'angular-template': pluginAngularTemplate,
+      },
+      rules: {
+        'angular-template/banana-in-box': 'error',
+        'angular-template/eqeqeq': 'error',
+        'angular-template/no-negated-async': 'error',
+      },
+    },
+
+    {
+      files: htmlConfig.files,
+      name: 'bricklou/angular/template-accessibility',
+      rules: {
+        'angular-template/alt-text': 'error',
+        'angular-template/click-events-have-key-events': 'error',
+        'angular-template/elements-content': 'error',
+        'angular-template/interactive-supports-focus': 'error',
+        'angular-template/label-has-associated-control': 'error',
+        'angular-template/mouse-events-have-key-events': 'error',
+        'angular-template/no-autofocus': 'error',
+        'angular-template/no-distracting-elements': 'error',
+        'angular-template/role-has-required-aria': 'error',
+        'angular-template/table-scope': 'error',
+        'angular-template/valid-aria': 'error',
+      },
+    },
+
     {
       files: htmlConfig.files,
       name: 'bricklou/angular/templates/rules',
       rules: {
-        '@angular-eslint/template/attributes-order': 'error',
-        '@angular-eslint/template/button-has-type': 'error',
-        '@angular-eslint/template/i18n': 'off',
+        'angular-template/attributes-order': 'error',
+        'angular-template/button-has-type': 'error',
+        'angular-template/i18n': 'off',
         // Since this rules doesn't support signals
-        '@angular-eslint/template/no-call-expression': 'off',
-        '@angular-eslint/template/no-duplicate-attributes': 'error',
-        '@angular-eslint/template/no-empty-control-flow': 'error',
-        '@angular-eslint/template/no-inline-styles': 'error',
-        '@angular-eslint/template/no-interpolation-in-attributes': 'warn',
-        '@angular-eslint/template/no-nested-tags': 'error',
-        '@angular-eslint/template/prefer-at-else': 'warn',
-        '@angular-eslint/template/prefer-at-empty': 'warn',
-        '@angular-eslint/template/prefer-built-in-pipes': 'warn',
-        '@angular-eslint/template/prefer-contextual-for-variables': 'warn',
-        '@angular-eslint/template/prefer-control-flow': 'warn',
-        '@angular-eslint/template/prefer-self-closing-tags': 'warn',
-        '@angular-eslint/template/prefer-static-string-properties': 'warn',
-        '@angular-eslint/template/prefer-template-literal': 'warn',
+        'angular-template/no-call-expression': 'off',
+        'angular-template/no-duplicate-attributes': 'error',
+        'angular-template/no-empty-control-flow': 'error',
+        'angular-template/no-inline-styles': 'error',
+        'angular-template/no-interpolation-in-attributes': 'warn',
+        'angular-template/no-nested-tags': 'error',
+        'angular-template/prefer-at-else': 'warn',
+        'angular-template/prefer-at-empty': 'warn',
+        'angular-template/prefer-built-in-pipes': 'warn',
+        'angular-template/prefer-contextual-for-variables': 'warn',
+        'angular-template/prefer-control-flow': 'warn',
+        'angular-template/prefer-self-closing-tags': 'warn',
+        'angular-template/prefer-static-string-properties': 'warn',
+        'angular-template/prefer-template-literal': 'warn',
 
         ...htmlConfig.overrides,
       },
     },
-  )
+  ]
 }

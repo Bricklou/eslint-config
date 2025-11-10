@@ -8,6 +8,7 @@ import {
   angular,
   comments,
   disables,
+  html,
   ignores,
   imports,
   javascript,
@@ -51,15 +52,21 @@ const VuePackages = [
 ]
 
 export const defaultPluginRenaming = {
+  '@angular-eslint': 'angular',
+  '@angular-eslint/template': 'angular-template',
+
   '@eslint-react': 'react',
   '@eslint-react/dom': 'react-dom',
   '@eslint-react/hooks-extra': 'react-hooks-extra',
-  '@eslint-react/naming-convention': 'react-naming-convention',
 
+  '@eslint-react/naming-convention': 'react-naming-convention',
+  '@html-eslint': 'html',
   '@stylistic': 'style',
   '@typescript-eslint': 'ts',
   'import-lite': 'import',
+
   'n': 'node',
+
   'vitest': 'test',
 
   'yml': 'yaml',
@@ -84,6 +91,7 @@ export function configLinter(
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
+    html: enableHtml = false,
     ignores: userIgnores = [],
     imports: enableImports = true,
     jsx: enableJsx = true,
@@ -223,15 +231,6 @@ export function configLinter(
     }))
   }
 
-  if (enableAngular) {
-    const selectors = resolveSubOptions(options, 'angular').selectors || {}
-    configs.push(angular({
-      html: resolveSubOptions(options, 'angular').html,
-      selectors,
-      ts: resolveSubOptions(options, 'angular').ts,
-    }))
-  }
-
   if (enableUnoCSS) {
     configs.push(unocss({
       ...resolveSubOptions(options, 'unocss'),
@@ -285,7 +284,28 @@ export function configLinter(
     configs.push(formatters(
       options.formatters,
       typeof stylisticOptions === 'boolean' ? {} : stylisticOptions,
+      {
+        angular: !!enableAngular,
+      },
     ))
+  }
+
+  if (enableAngular) {
+    if (enableHtml) {
+      console.warn('[@bricklou/eslint-config] Warning: Both Angular and HTML formatting are enabled. HTML formatting will be skipped to avoid conflicts.')
+    }
+
+    const angularOptions = resolveSubOptions(options, 'angular')
+    configs.push(angular({
+      html: angularOptions.html,
+      selectors: angularOptions.selectors || {},
+      ts: angularOptions.ts,
+    }))
+  }
+  else if (enableHtml) {
+    configs.push(html({
+      overrides: getOverrides(options, 'html'),
+    }))
   }
 
   configs.push(

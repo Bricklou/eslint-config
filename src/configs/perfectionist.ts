@@ -1,5 +1,6 @@
 import type { TypedFlatConfigItem } from '../types'
 
+import { GLOB_HTML } from '../globs'
 import { pluginPerfectionist } from '../plugins'
 
 /**
@@ -10,6 +11,7 @@ import { pluginPerfectionist } from '../plugins'
 export async function perfectionist(): Promise<TypedFlatConfigItem[]> {
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/perfectionist/setup',
       plugins: {
         perfectionist: pluginPerfectionist,

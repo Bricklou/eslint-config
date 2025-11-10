@@ -1,5 +1,6 @@
 import type { OptionsUnicorn, TypedFlatConfigItem } from '../types'
 
+import { GLOB_HTML } from '../globs'
 import { pluginUnicorn } from '../plugins'
 
 export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatConfigItem[]> {
@@ -9,6 +10,7 @@ export async function unicorn(options: OptionsUnicorn = {}): Promise<TypedFlatCo
   } = options
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/unicorn/rules',
       plugins: {
         unicorn: pluginUnicorn,

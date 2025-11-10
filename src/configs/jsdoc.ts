@@ -1,4 +1,5 @@
 import type { OptionsStylistic, TypedFlatConfigItem } from '../types'
+import { GLOB_HTML } from '../globs'
 
 import { interopDefault } from '../utils'
 
@@ -9,6 +10,7 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
 
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/jsdoc/rules',
       plugins: {
         jsdoc: await interopDefault(import('eslint-plugin-jsdoc')),

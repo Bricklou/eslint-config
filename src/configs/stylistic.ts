@@ -1,4 +1,5 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types'
+import { GLOB_HTML } from '../globs'
 import { pluginAntfu } from '../plugins'
 import { interopDefault } from '../utils'
 
@@ -40,6 +41,7 @@ export async function stylistic(
 
   return [
     {
+      ignores: [GLOB_HTML],
       name: 'bricklou/stylistic/rules',
       plugins: {
         antfu: pluginAntfu,

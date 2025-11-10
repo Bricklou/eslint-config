@@ -453,7 +453,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
   angular?: boolean | OptionAngular
 
   /**
-   * Enable angular rules.
+   * Enable html rules.
    *
    * Requires installing:
    * - `@html-eslint/eslint-plugin`

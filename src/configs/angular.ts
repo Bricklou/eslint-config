@@ -22,7 +22,10 @@ export async function angular(
   const directiveSelectors = selectors?.directive || {}
 
   await ensurePackages([
-    'angular-eslint',
+    '@typescript-eslint/parser',
+    '@angular-eslint/eslint-plugin',
+    '@angular-eslint/eslint-plugin-template',
+    '@angular-eslint/template-parser',
   ])
 
   const [
